@@ -11,7 +11,7 @@ vector<long long> buildPrefixSum(const vector<long long>& arr) {
     vector<long long> prefix(arr.size() + 1, 0);
 
     for (size_t i = 0; i < arr.size(); i++) {
-        prefix[i + 1] = prefix[i] + arr[i];
+        prefix[i+1] = prefix[i] + arr[i];
 
         if (pkg::Trace()) {
             pkg::Debug("i=%zu arr[i]=%lld prefix[%zu]=%lld+%lld=%lld",
@@ -49,8 +49,8 @@ int main() {
     while (q--) {
         int l, r;
         cin >> l >> r;
-        long long result = rangeSum(prefix, l - 1, r - 1);
-        // if (pkg::Trace()) pkg::Debug("query l=%d r=%d -> result=%lld", l, r, result);
+        long long result = rangeSum(prefix, l, r);
+        if (pkg::Trace()) pkg::Debug("query l=%d r=%d -> result=%lld", l, r, result);
         out << result << '\n';
     }
 
